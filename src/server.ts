@@ -1,17 +1,20 @@
+import 'dotenv/config'
+
 import fastify from 'fastify'
 import { knex } from './database'
+import { env } from './env'
 
 const app = fastify()
 
 app.get('/hello', async (req, res) => {
-  const tables = await knex('sqlite_schema').select('*')
+  const transition = await knex('transactions').where('amount', 1000)
 
-  return tables
+  return transition
 })
 
 app
   .listen({
-    port: 3333,
+    port: env.PORT,
   })
   .then(() => {
     console.log('HTTP server listening on port: 3333')
