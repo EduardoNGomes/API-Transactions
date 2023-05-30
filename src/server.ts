@@ -1,16 +1,12 @@
 import 'dotenv/config'
 
 import fastify from 'fastify'
-import { knex } from './database'
 import { env } from './env'
+import { transactionRoutes } from './routes/transactions'
 
 const app = fastify()
 
-app.get('/hello', async (req, res) => {
-  const transition = await knex('transactions').where('amount', 1000)
-
-  return transition
-})
+app.register(transactionRoutes)
 
 app
   .listen({
