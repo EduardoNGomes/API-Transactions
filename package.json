@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "tsx --watch src/server.ts",
     "knex": "node --no-warnings --loader tsx ./node_modules/.bin/knex",
+    "migrate-deploy": "npx knex --knexfile knexfile.ts migrate:latest ",
     "lint": "eslint src --ext .ts --fix",
     "build": "tsup src --out-dir build"
   },
@@ -23,6 +24,7 @@
     "eslint": "^8.41.0",
     "sqlite3": "^5.1.6",
     "supertest": "^6.3.3",
+    "ts-node": "^10.9.1",
     "tslib": "^2.5.2",
     "tsup": "^6.7.0",
     "tsx": "^3.12.7",
@@ -34,7 +36,6 @@
     "fastify": "^4.17.0",
     "knex": "^2.4.2",
     "pg": "^8.11.0",
-    "ts-node": "^10.9.1",
     "zod": "^3.21.4"
   }
 }
